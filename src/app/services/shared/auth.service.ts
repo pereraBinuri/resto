@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
+import { Login } from '../../models/login.model';
+import { Register } from '../../models/register.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,12 @@ export class AuthService {
   constructor(private apiService: ApiService) {}
 
   // Register a user
-  register(registerForm: any): Observable<any> {
-    return this.apiService.post(`${this.userServiceBaseUrl}/register`, registerForm);
+  register(registerData: Register): Observable<any> {
+    return this.apiService.post(`${this.userServiceBaseUrl}/register`, registerData);
   }
 
   // Login a user
-  login(email: string, password: string): Observable<any> {
-    const loginData = { email, password };
+  login(loginData: Login): Observable<any> {
     return this.apiService.post(`${this.userServiceBaseUrl}/login`, loginData);
   }
 }

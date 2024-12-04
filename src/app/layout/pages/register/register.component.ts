@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/shared/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Register } from '../../../models/register.model';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
 
@@ -23,27 +26,30 @@ export class RegisterComponent {
     this.registerForm = this.formBuilder.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      address: [''],
-      country_code: ['+94', Validators.required],
+      //address: [''],
+      country_code: ['', Validators.required],
       contact_number: ['', [Validators.required, Validators.pattern(/^-?([0-9]\d*)?$/)]],
       type: ['WEBSHOP', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      account_brand: ['subway'],
-      subscribe_to_promotion_emails: [false],
-      device_platform: ['web']
+      account_brand: ['1'],
+      //subscribe_to_promotion_emails: [false],
     });
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
-      this.authenticationService.register(this.registerForm.value).subscribe(
+      const registerData: Register = this.registerForm.value;
+
+      this.authenticationService.register(registerData).subscribe(
         response => {
           console.log('Registration successful:', response);
+          alert('Registration successful! Redirecting to login page.');
           this.router.navigate(['/login']);
         },
         error => {
           console.error('Registration failed:', error);
+          alert('Registration failed. Please try again.');
         }
       );
     }
