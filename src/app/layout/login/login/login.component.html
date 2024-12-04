@@ -1,1 +1,55 @@
-<p>login works!</p>
+<div class="container">
+    <div class="wrapper">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" >
+        <h1>Login</h1>
+  
+        <div class="input-box">
+          <input
+            type="email"
+            id="username"
+            placeholder="Username"
+            formControlName="username"
+            required
+            
+          />
+          <i class='bx bxs-user'></i>
+          <div *ngIf="submitted && loginForm.get('username')?.invalid">
+            <small *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</small>
+            <small *ngIf="loginForm.get('username')?.errors?.['email']">Enter a valid email address.</small>
+          </div>
+        </div>
+  
+        <div class="input-box">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+            required
+           
+          />
+          <i class='bx bxs-lock-alt'></i>
+          <div *ngIf="submitted && loginForm.get('password')?.invalid">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+              Password must be at least 6 characters.
+            </small>
+          </div>
+        </div>
+
+        <p *ngIf="loginError" class="error">{{ loginError }}</p>
+  
+        <button type="submit" class="btn" >Login</button>
+  
+        <div class="register-link">
+          <a href="#">Forget password?</a>
+        </div>
+  
+        <div class="register-link">
+          <p>Don't have an account? <a href="#">Register</a></p>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+  

@@ -1,0 +1,139 @@
+/* Parent container styling */
+.parent {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c36;
+    color: white;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    min-height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove any default margin */
+   
+}
+
+/* Container styling */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;  /* Ensure the container takes the full height of the parent */
+    margin-top: 120px;
+}
+
+/* Wrapper styling */
+.wrapper {
+    width: 100%; /* Ensure wrapper takes full container width */
+    max-width: 420px; /* Max width of wrapper to prevent stretching */
+    background-color: rgba(18, 54, 215, 0.4);
+    border: 2px solid rgba(255, 255, 255, 02);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center elements vertically inside the wrapper */
+    align-items: center; /* Center elements horizontally inside the wrapper */
+}
+
+/* Header styling */
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Input box styling */
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 45px 10px 20px;
+    box-sizing: border-box;
+}
+
+/* Error message styling */
+.input-box small {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -18px;
+    left: 10px;
+}
+
+/* Button styling */
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Hover effect for button */
+.wrapper .btn:hover {
+    background-color: #ff76ba;
+    color: #fff;
+}
+
+/* Register link styling */
+.wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .register-link a {
+    color: #fff;
+    font-size: 13px;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 0.9em;
+    color: #ff4d4d;
+    text-align: center;
+    margin: 15px auto;
+    max-width: 400px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+input.ng-valid.ng-touched {
+    border-color: green;
+}

@@ -4,6 +4,8 @@ import { AuthService } from '../../../services/shared/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Register } from '../../../models/register.model';
+import { state } from '@angular/animations';
+import { UserService } from '../../../services/user/user.service';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,  // Inject FormBuilder into the constructor
     private authenticationService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     // Initialize the form inside the constructor to avoid using the uninitialized 'formBuilder'
     this.registerForm = this.formBuilder.group({
@@ -44,7 +47,11 @@ export class RegisterComponent {
       this.authenticationService.register(registerData).subscribe(
         response => {
           console.log('Registration successful:', response);
-          alert('Registration successful! Redirecting to login page.');
+          //alert('Registration successful! Redirecting to login page.');
+          // Store email and password in UserService
+          //this.userService.setUserCredentials(registerData.email, registerData.password);
+
+          // Navigate to login page
           this.router.navigate(['/login']);
         },
         error => {

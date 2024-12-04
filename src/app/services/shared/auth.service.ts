@@ -19,6 +19,7 @@ export class AuthService {
 
   // Login a user
   login(loginData: Login): Observable<any> {
+    
     return this.apiService.post(`${this.userServiceBaseUrl}/login`, loginData);
   }
 }
