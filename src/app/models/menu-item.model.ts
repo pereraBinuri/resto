@@ -3,7 +3,8 @@ export class MenuItem {
     name: string = '';
     description: string = '';
     price: number = 0;
-    //image?: string;
+    imageUrl: string = ''; 
+    images: { group: string, size: string, path: string }[] = []; 
     category: string = '';
   }
   

@@ -1,7 +1,10 @@
 <div class="menu-bar">
-  <p>menu bar works!</p>
-    <button *ngFor="let category of categories" (click)="selectCategory(category.name)">
+    <button 
+    *ngFor="let category of categories" 
+    [class.active]="category.name === selectedCategory"
+    (click)="selectCategory(category.name)">
       {{ category.name }}
+      <span class="ripple"></span>
     </button>
   </div>
   

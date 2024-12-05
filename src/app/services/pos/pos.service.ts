@@ -13,33 +13,31 @@ export class PosService {
 
   constructor(private apiService: ApiService) {}
 
-  getMenu(): Observable<MenuCategory[]> {  // Specify return type
-    return this.apiService.get<MenuItem[]>(`${this.posServiceBaseUrl}/main-menu/1/categories/webshop-brand/1/shop/2`).pipe(
-      map((response: any) => {
-        // Log the whole response to see its structure
+  getMenu(): Observable<MenuCategory[]> {
+    return this.apiService.get<any>(`${this.posServiceBaseUrl}/main-menu/36/categories/webshop-brand/1/shop/2`).pipe(
+      map(response => {
         console.log('API response:', response);
-
-        // Check if the response contains a valid 'data' array
-        const items: MenuItem[] = response.data || [];
-        
-        if (!Array.isArray(items)) {
-          console.error('Expected an array of items but got:', items);
+  
+        // Ensure 'data' exists and is a valid object
+        if (response && response.data && typeof response.data === 'object') {
+          return Object.keys(response.data).map(category => ({
+            name: category,
+            items: response.data[category].map((item: any) => ({
+              id: item.id,
+              name: item.title,
+              description: item.description || '',
+              price: parseFloat(item.price || '0'),
+              imageUrl: item.image_url || '',
+              images: item.images || [],
+              category: category
+            }))
+          }));
+        } else {
+          console.error('Unexpected API response structure:', response);
+          return [];
         }
-
-        const categories = items.reduce((acc, item) => {
-          acc[item.category] = acc[item.category] || [];
-          acc[item.category].push(item);
-          return acc;
-        }, {} as Record<string, MenuItem[]>);
-
-        // Log categories to inspect the grouping
-        console.log('Grouped categories:', categories);
-
-        return Object.keys(categories).map((category) => ({
-          name: category,
-          items: categories[category],
-        }));
       })
     );
   }
+  
 }

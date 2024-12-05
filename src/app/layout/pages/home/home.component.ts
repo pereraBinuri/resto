@@ -20,14 +20,43 @@ export class HomeComponent {
   constructor(private posService: PosService) {}
 
   ngOnInit() {
-    this.posService.getMenu().subscribe(categories => {
-      this.categories = categories;
-      if (categories.length > 0) {
-        this.selectedCategory = categories[0].name;
-        console.log('Default selected category:', this.selectedCategory);
-        this.updateMenuItems(); // Initialize menuItems when categories are loaded
+    this.posService.getMenu().subscribe(
+      categories => {
+        this.categories = categories; // Use the parsed categories directly
+        if (this.categories.length > 0) {
+          this.selectedCategory = this.categories[0].name;
+          console.log('Default selected category:', this.selectedCategory);
+          this.updateMenuItems(); // Initialize menuItems when categories are loaded
+        }
+      },
+      error => {
+        console.error('Error fetching menu:', error);
       }
-    });
+    );
+  }
+  
+
+  private mapCategories(data: Record<string, any[]>): MenuCategory[] {
+    const categories: MenuCategory[] = [];
+    for (const categoryName in data) {
+      if (data.hasOwnProperty(categoryName)) {
+        const items = data[categoryName];
+        const category: MenuCategory = {
+          name: categoryName,
+          items: items.map(item => ({
+            id: item.id,
+            name: item.title,
+            description: item.description || '',
+            price: parseFloat(item.price || '0'),
+            imageUrl: item.image_url || '',
+            images: item.images || [],
+            category: categoryName
+          })),
+        };
+        categories.push(category);
+      }
+    }
+    return categories;
   }
 
   onCategorySelected(category: string) {

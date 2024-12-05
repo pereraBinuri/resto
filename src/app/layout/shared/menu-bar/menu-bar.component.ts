@@ -13,8 +13,10 @@ export class MenuBarComponent {
 
   @Input() categories: MenuCategory[] = [];
   @Output() categorySelected = new EventEmitter<string>();
+  selectedCategory = '';
 
   selectCategory(category: string) {
+    this.selectedCategory = category;
     console.log('Category selected in menu bar:', category);
     this.categorySelected.emit(category);
   }
