@@ -15,7 +15,7 @@
           <i class='bx bxs-user'></i>
           <div *ngIf="submitted && loginForm.get('username')?.invalid">
             <small *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</small>
-            <small *ngIf="loginForm.get('username')?.errors?.['email']">Enter a valid email address.</small>
+            <small *ngIf="loginForm.get('username')?.errors?.['strictEmail']">Enter a valid email address.</small>
           </div>
         </div>
   
@@ -46,7 +46,7 @@
         </div>
   
         <div class="register-link">
-          <p>Don't have an account? <a href="#">Register</a></p>
+          <p>Don't have an account? <a routerLink="/register">Register</a></p>
         </div>
       </form>
   

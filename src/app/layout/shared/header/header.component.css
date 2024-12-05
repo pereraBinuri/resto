@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    background-color: #1f2937; /* Darker gray for a modern look */
+    background-color: #dc143c; /* Darker gray for a modern look */
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
     font-family: 'Arial', sans-serif;

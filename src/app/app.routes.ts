@@ -6,11 +6,12 @@ import { CommonLayoutComponent } from './layout/shared/common-layout/common-layo
 import { SettingsComponent } from './layout/pages/settings/settings.component';
 import { SearchComponent } from './layout/pages/search/search.component';
 import { authGuard } from './helpers/auth.guard';
+import { guestGuard } from './helpers/guest.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect to home if no path is matched
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent, canActivate: [guestGuard] },
+    { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
     {
         path: '',
         component: CommonLayoutComponent, // Parent layout for sidebar-enabled pages

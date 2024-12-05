@@ -6,6 +6,7 @@ import { Login } from '../../../models/login.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
+import { strictEmailValidator } from '../../../helpers/validators/strict-email.validator';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,7 @@ export class LoginComponent {
     //const credentials = this.userService.getUserCredentials();
 
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, strictEmailValidator]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }

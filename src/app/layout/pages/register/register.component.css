@@ -3,7 +3,8 @@
     margin: 50px auto;
     padding: 30px;
     border-radius: 10px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    background-color: rgba(18, 54, 215, 0.4);
+    backdrop-filter: blur(20px);
     box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #ffffff;
     font-family: 'Arial', sans-serif;
   }

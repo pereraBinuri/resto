@@ -6,7 +6,7 @@
     /* Initially hidden to the left */
     height: 100%;
     width: 250px;
-    background-color: #333333;
+    background-color: #ff4040 ;
     color: white;
     transition: left 0.3s ease;
     z-index: 1000;
@@ -32,18 +32,19 @@
 }
 
 .sidebar li:hover {
-    background-color: #575757;
+    background-color: #be0032;
 }
 
 /* Remove underline from all anchor tags in the sidebar */
 .sidebar a {
-    text-decoration: none; /* Removes the underline */
+    text-decoration: none; 
+    color: white;/* Removes the underline */
 }
 
 
 /* Add this to your sidebar.component.css */
 .sidebar li a.active {
-    color: #ffcc00; /* Example: change text color to yellow */
+    color: #fff600; /* Example: change text color to yellow */
 }
 
 /* Optional: Add hover effect to the active item */
