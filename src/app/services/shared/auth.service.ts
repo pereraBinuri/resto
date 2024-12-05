@@ -22,4 +22,24 @@ export class AuthService {
     
     return this.apiService.post(`${this.userServiceBaseUrl}/login`, loginData);
   }
+
+  // Store token after successful login
+  setAuthToken(token: string) {
+    localStorage.setItem('authToken', token);  // Store token in localStorage
+  }
+
+   // Retrieve token
+   getAuthToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
+  // Remove token during logout
+  logout(): void {
+    localStorage.removeItem('authToken');
+  }
+
+  // Check if the user is logged in by checking token existence
+  isLoggedIn(): boolean {
+    return this.getAuthToken() !== null;
+  }
 }

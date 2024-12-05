@@ -1,0 +1,76 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #1f2937; /* Darker gray for a modern look */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    font-family: 'Arial', sans-serif;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.menu-btn:hover {
+    transform: scale(1.2); /* Scale up button slightly on hover */
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem; /* Add space between navigation items */
+    list-style: none;
+    
+}
+
+.nav-item {
+    position: relative;
+    list-style: none; 
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    color: #ffdd57; /* Highlight color on hover */
+    background-color: rgba(255, 221, 87, 0.2); /* Light background on hover */
+}
+
+.navbar-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffdd57; /* Highlight title in a complementary color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .navbar-title {
+        margin-top: 1rem;
+        align-self: center;
+    }
+}

@@ -4,13 +4,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../../../services/shared/auth.service';
 import { Login } from '../../../models/login.model';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -64,6 +64,8 @@ export class LoginComponent {
     this.authService.login(loginData).subscribe(
       (response) => {
         console.log('Login successful:', response);
+        const accessToken = response.accessToken; // Assuming accessToken in the response
+        this.authService.setAuthToken(accessToken);
         // Handle successful login (e.g., redirect to dashboard)
         this.router.navigate(['/home']);
       },

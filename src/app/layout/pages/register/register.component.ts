@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/shared/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Register } from '../../../models/register.model';
 import { state } from '@angular/animations';
@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user/user.service';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
