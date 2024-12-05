@@ -1,0 +1,7 @@
+<div class="menu-bar">
+  <p>menu bar works!</p>
+    <button *ngFor="let category of categories" (click)="selectCategory(category.name)">
+      {{ category.name }}
+    </button>
+  </div>
+  

@@ -1,0 +1,11 @@
+<div class="menu-item">
+  <p>menu item works!</p>
+    <img   alt="{{ menuItem.name }}" />
+    <!--<img *ngIf="menuItem.imageUrl" [src]="menuItem.imageUrl" alt="{{ menuItem.name }}" />-->
+    <div>
+      <h3>{{ menuItem.name }}</h3>
+      <p>{{ menuItem.description }}</p>
+      <p>Price: {{ menuItem.price | currency }}</p>
+    </div>
+  </div>
+  

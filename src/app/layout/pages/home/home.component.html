@@ -1,1 +1,8 @@
-<p>home works!</p>
+<div>
+    <p>home works!</p>
+    <app-menu-bar [categories]="categories" (categorySelected)="onCategorySelected($event)">
+    </app-menu-bar>
+    <!-- Pass computed menuItems to MenuListComponent -->
+    <app-menu-list [menuItems]="menuItems">
+    </app-menu-list>
+</div>
