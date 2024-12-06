@@ -1,7 +1,8 @@
-<div class="menu-item">
+<div class="menu-item" (click)="openModal()">
     <img *ngIf="menuItem.imageUrl; else defaultImage" [src]="menuItem.imageUrl" alt="{{ menuItem.name }}" />
     <ng-template #defaultImage>
-      <img src="assets/images/logo.png" alt="Restaurant Logo" />
+      <img src="https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" alt="Restaurant Logo" />
+      <!--<img src="assets/images/logo.png" alt="Restaurant Logo" />-->
     </ng-template>
     <div>
       <h3>{{ menuItem.name }}</h3>
@@ -9,4 +10,10 @@
       <p>Price: {{ menuItem.price | currency }}</p>
     </div>
   </div>
+
+  <app-item-modal
+  [menuItem]="menuItem"
+  [showModal]="showModal"
+  (close)="showModal = false"
+></app-item-modal>
   

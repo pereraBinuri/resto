@@ -1,0 +1,13 @@
+<div class="modal-backdrop" *ngIf="showModal">
+    <div class="modal"  *ngIf="menuItem">
+        <button class="close-btn" (click)="closeModal()">
+            <span class="material-icons">close</span>
+        </button>
+      
+      <img [src]="menuItem.imageUrl || 'https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg'" alt="{{ menuItem.name }}" />
+      <h3>{{ menuItem.name }}</h3>
+      <p>{{ menuItem.description }}</p>
+      <p>Price: {{ menuItem.price | currency }}</p>
+    </div>
+  </div>
+  

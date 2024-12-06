@@ -8,7 +8,7 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   standalone: true,
   imports: [CommonModule, MenuItemComponent],
   templateUrl: './menu-list.component.html',
-  styleUrl: './menu-list.component.css'
+  styleUrls: ['./menu-list.component.css']
 })
 export class MenuListComponent {
 
