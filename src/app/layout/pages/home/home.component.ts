@@ -17,47 +17,29 @@ export class HomeComponent {
   selectedCategory: string = '';
   menuItems: MenuItem[] = [];
 
-  constructor(private posService: PosService) {}
+  constructor(private posService: PosService) { }
 
   ngOnInit() {
-    this.posService.getMenu().subscribe(
-      categories => {
-        this.categories = categories; // Use the parsed categories directly
-        if (this.categories.length > 0) {
-          this.selectedCategory = this.categories[0].name;
+    this.loadCategoriesAndMenuItems();
+  }
+
+  loadCategoriesAndMenuItems() {
+    this.posService.getMenu().subscribe({
+      next: (res: any) => {
+        if (res && res.length > 0) {
+          this.categories = res; // Assign the categories from the response
+          this.selectedCategory = this.categories[0].name; // Set the default selected category
           console.log('Default selected category:', this.selectedCategory);
           this.updateMenuItems(); // Initialize menuItems when categories are loaded
+        } else {
+          console.log('No categories found.');
         }
       },
-      error => {
-        console.error('Error fetching menu:', error);
+      error: (err: any) => {
+        console.error('Error fetching menu:', err);
       }
-    );
-  }
-  
-
-  private mapCategories(data: Record<string, any[]>): MenuCategory[] {
-    const categories: MenuCategory[] = [];
-    for (const categoryName in data) {
-      if (data.hasOwnProperty(categoryName)) {
-        const items = data[categoryName];
-        const category: MenuCategory = {
-          name: categoryName,
-          items: items.map(item => ({
-            id: item.id,
-            name: item.title,
-            description: item.description || '',
-            price: parseFloat(item.price || '0'),
-            imageUrl: item.image_url || '',
-            images: item.images || [],
-            category: categoryName
-          })),
-        };
-        categories.push(category);
-      }
-    }
-    return categories;
-  }
+    });
+  }  
 
   onCategorySelected(category: string) {
     console.log('Category selected:', category);
