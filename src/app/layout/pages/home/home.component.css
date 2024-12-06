@@ -1,4 +1,12 @@
 /* Basic layout for Home component */
+/* Add background color to the entire Home component */
+.home-container {
+  background-color: #002366; /* Replace with desired color */
+  min-height: 100vh; /* Ensure it covers the full height of the viewport */
+  padding: 20px; /* Optional: Adjust padding for spacing */
+}
+
+
 div {
     padding: 20px;
     display: flex;
@@ -11,4 +19,26 @@ div {
     font-size: 2rem;
     margin-bottom: 20px;
   }
+
+  .cart-container {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    z-index: 1000;
+  }
+  
+  .cart-button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Adjust the background color */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cart-button:hover {
+    background-color: #0056b3; /* Adjust the hover color */
+  }
+  
   

@@ -1,0 +1,26 @@
+<div class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="onClose()">&times;</span>
+      <h2>Cart</h2>
+      <!-- Display cart details here -->
+      <div *ngFor="let item of cartItems">
+        <div class="cart-item">
+          <img [src]="item.imageUrl" alt="{{ item.name }}" />
+          <div class="item-details">
+            <h4>{{ item.name }}</h4>
+            <p>{{ item.price | currency }}</p>
+            <div class="quantity-control">
+              <button (click)="updateQuantity(item, false)">-</button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="updateQuantity(item, true)">+</button>
+            </div>
+          </div>
+          <button (click)="removeItem(item)">Remove</button>
+        </div>
+      </div>
+      <div class="total">
+        <p>Total: {{ totalPrice | currency }}</p>
+      </div>
+    </div>
+  </div>
+  

@@ -6,6 +6,7 @@ export class MenuItem {
     imageUrl: string = ''; 
     images: { group: string, size: string, path: string }[] = []; 
     category: string = '';
+    quantity: number = 0;
   }
   
   export class MenuCategory {

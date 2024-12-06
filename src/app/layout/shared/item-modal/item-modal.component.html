@@ -8,6 +8,14 @@
       <h3>{{ menuItem.name }}</h3>
       <p>{{ menuItem.description }}</p>
       <p>Price: {{ menuItem.price | currency }}</p>
+
+      <div class="quantity-control">
+        <button (click)="changeQuantity(false)">-</button>
+        <span>{{ menuItem.quantity || 1 }}</span>
+        <button (click)="changeQuantity(true)">+</button>
+      </div>
+  
+      <button class="add-cart-btn" (click)="addToCart()">Add to Cart</button>
     </div>
   </div>
   

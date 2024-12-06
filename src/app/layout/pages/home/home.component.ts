@@ -3,11 +3,13 @@ import { PosService } from '../../../services/pos/pos.service';
 import { MenuCategory, MenuItem } from '../../../models/menu-item.model';
 import { MenuBarComponent } from '../../shared/menu-bar/menu-bar.component';
 import { MenuListComponent } from '../../shared/menu-list/menu-list.component';
+import { CartModalComponent } from '../../shared/cart-modal/cart-modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MenuBarComponent, MenuListComponent],
+  imports: [MenuBarComponent, MenuListComponent, CartModalComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -16,6 +18,7 @@ export class HomeComponent {
   categories: MenuCategory[] = [];
   selectedCategory: string = '';
   menuItems: MenuItem[] = [];
+  isCartModalOpen: boolean = false; // Controls the cart modal visibility
 
   constructor(private posService: PosService) { }
 
@@ -58,5 +61,15 @@ export class HomeComponent {
       console.error('No items found for category:', this.selectedCategory);
       this.menuItems = [];
     }
+  }
+
+  // Method to open the cart modal
+  openCartModal() {
+    this.isCartModalOpen = true;
+  }
+
+  // Method to close the cart modal
+  closeCartModal() {
+    this.isCartModalOpen = false;
   }
 }

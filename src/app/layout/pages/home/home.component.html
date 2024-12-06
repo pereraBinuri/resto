@@ -1,10 +1,18 @@
-<div>
-    <app-menu-bar 
-    [categories]="categories" 
-    [selectedCategory]="selectedCategory" 
-    (categorySelected)="onCategorySelected($event)">
+<div class="home-container">
+  <div class="cart-container">
+    <!-- Cart Button in top-left corner -->
+    <button class="cart-button" (click)="openCartModal()">Cart</button>
+  </div>
+
+  <div>
+    <app-menu-bar [categories]="categories" [selectedCategory]="selectedCategory"
+      (categorySelected)="onCategorySelected($event)">
     </app-menu-bar>
     <!-- Pass computed menuItems to MenuListComponent -->
     <app-menu-list [menuItems]="menuItems">
     </app-menu-list>
+  </div>
+
+  <!-- Cart Modal -->
+  <app-cart-modal *ngIf="isCartModalOpen" (close)="closeCartModal()"></app-cart-modal>
 </div>
