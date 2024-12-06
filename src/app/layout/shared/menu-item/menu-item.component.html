@@ -1,5 +1,8 @@
 <div class="menu-item">
-    <img *ngIf="menuItem.imageUrl" [src]="menuItem.imageUrl" alt="{{ menuItem.name }}" />
+    <img *ngIf="menuItem.imageUrl; else defaultImage" [src]="menuItem.imageUrl" alt="{{ menuItem.name }}" />
+    <ng-template #defaultImage>
+      <img src="assets/images/logo.png" alt="Restaurant Logo" />
+    </ng-template>
     <div>
       <h3>{{ menuItem.name }}</h3>
       <p>{{ menuItem.description }}</p>
