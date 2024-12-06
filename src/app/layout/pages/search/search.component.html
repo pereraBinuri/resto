@@ -1,1 +1,8 @@
-<p>search works!</p>
+<div class="search-container">
+    <!-- Search Bar -->
+    <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search for menu items..." />
+  
+    <!-- Display search results using MenuListComponent -->
+    <app-menu-list [menuItems]="filteredItems"></app-menu-list>
+  </div>
+  
