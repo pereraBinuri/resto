@@ -9,18 +9,20 @@ import { map, Observable } from 'rxjs';
 })
 export class PosService {
 
-  private posServiceBaseUrl = 'https://pos-dev.delivergate.com/api/v1/webshop';
+  private serviceType: 'menu' = 'menu'; // Define the service type for menu service
 
   constructor(private apiService: ApiService) {}
 
+  // Fetch menu categories and items
   getMenu(): Observable<MenuCategory[]> {
-    return this.apiService.get<any>(`${this.posServiceBaseUrl}/main-menu/36/categories/webshop-brand/1/shop/2`).pipe(
-      map(response => {
+    const endpoint = '/webshop/main-menu/36/categories/webshop-brand/1/shop/2'; // Endpoint specific to the menu service
+    return this.apiService.get<any>(this.serviceType, endpoint).pipe(
+      map((response) => {
         console.log('API response:', response);
-  
+
         // Ensure 'data' exists and is a valid object
         if (response && response.data && typeof response.data === 'object') {
-          return Object.keys(response.data).map(category => ({
+          return Object.keys(response.data).map((category) => ({
             name: category,
             items: response.data[category].map((item: any) => ({
               id: item.id,
@@ -29,8 +31,8 @@ export class PosService {
               price: parseFloat(item.price || '0'),
               imageUrl: item.image_url || '',
               images: item.images || [],
-              category: category
-            }))
+              category: category,
+            })),
           }));
         } else {
           console.error('Unexpected API response structure:', response);

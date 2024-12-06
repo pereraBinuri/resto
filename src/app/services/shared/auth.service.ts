@@ -8,28 +8,29 @@ import { Register } from '../../models/register.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private userServiceBaseUrl = 'https://user-dev.delivergate.com/api/v1/webshop_customer';
+  private serviceType: 'user' = 'user'; // Define the service type for user service
 
   constructor(private apiService: ApiService) {}
 
   // Register a user
   register(registerData: Register): Observable<any> {
-    return this.apiService.post(`${this.userServiceBaseUrl}/register`, registerData);
+    const endpoint = '/webshop_customer/register'; // Endpoint specific to the user service
+    return this.apiService.post(this.serviceType, endpoint, registerData);
   }
 
   // Login a user
   login(loginData: Login): Observable<any> {
-    
-    return this.apiService.post(`${this.userServiceBaseUrl}/login`, loginData);
+    const endpoint = '/webshop_customer/login'; // Endpoint specific to the user service
+    return this.apiService.post(this.serviceType, endpoint, loginData);
   }
 
   // Store token after successful login
-  setAuthToken(token: string) {
-    localStorage.setItem('authToken', token);  // Store token in localStorage
+  setAuthToken(token: string): void {
+    localStorage.setItem('authToken', token); // Store token in localStorage
   }
 
-   // Retrieve token
-   getAuthToken(): string | null {
+  // Retrieve token
+  getAuthToken(): string | null {
     return localStorage.getItem('authToken');
   }
 
