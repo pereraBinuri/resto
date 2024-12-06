@@ -12,8 +12,9 @@ import { CommonModule } from '@angular/common';
 export class MenuBarComponent {
 
   @Input() categories: MenuCategory[] = [];
+  @Input() selectedCategory: string = ''; 
   @Output() categorySelected = new EventEmitter<string>();
-  selectedCategory = '';
+  //selectedCategory = '';
 
   selectCategory(category: string) {
     this.selectedCategory = category;

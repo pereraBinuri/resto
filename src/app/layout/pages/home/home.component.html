@@ -1,5 +1,8 @@
 <div>
-    <app-menu-bar [categories]="categories" (categorySelected)="onCategorySelected($event)">
+    <app-menu-bar 
+    [categories]="categories" 
+    [selectedCategory]="selectedCategory" 
+    (categorySelected)="onCategorySelected($event)">
     </app-menu-bar>
     <!-- Pass computed menuItems to MenuListComponent -->
     <app-menu-list [menuItems]="menuItems">
