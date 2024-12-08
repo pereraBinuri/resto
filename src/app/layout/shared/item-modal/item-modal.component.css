@@ -78,7 +78,7 @@
 
 /* Add to Cart button */
 .add-cart-btn {
-  background-color: #007BFF;
+  background-color: #dc143c;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -90,6 +90,6 @@
 }
 
 .add-cart-btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #ff0000; /* Darker blue on hover */
 }
   

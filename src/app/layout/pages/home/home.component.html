@@ -1,7 +1,8 @@
 <div class="home-container">
   <div class="cart-container">
     <!-- Cart Button in top-left corner -->
-    <button class="cart-button" (click)="openCartModal()">Cart</button>
+    <mat-icon class="cart-icon" (click)="openCartModal()">shopping_cart</mat-icon>
+    <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
   </div>
 
   <div>

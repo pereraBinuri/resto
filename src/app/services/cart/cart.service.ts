@@ -9,38 +9,46 @@ export class CartService {
 
   constructor() { }
 
-  private cartItems: MenuItem[] = [];
-  private cartItemsSubject = new BehaviorSubject<MenuItem[]>(this.cartItems);
+  private _cartItems: MenuItem[] = [];
+  private cartItemsSubject = new BehaviorSubject<MenuItem[]>(this._cartItems);
 
   cartItems$ = this.cartItemsSubject.asObservable();
 
+  get cartItems(): MenuItem[] {
+    return this.cartItemsSubject.value;
+  }
+
   addToCart(item: MenuItem) {
-    const existingItem = this.cartItems.find(i => i.name === item.name);
+    const existingItem = this._cartItems.find(i => i.name === item.name);
     if (existingItem) {
       existingItem.quantity++;
     } else {
-      this.cartItems.push({ ...item, quantity: item.quantity || 1 });
+      this._cartItems.push({ ...item, quantity: item.quantity || 1 });
     }
-    this.cartItemsSubject.next(this.cartItems);
+    this.cartItemsSubject.next(this._cartItems);
   }
 
   removeFromCart(item: MenuItem) {
-    const index = this.cartItems.findIndex(i => i.name === item.name);
+    const index = this._cartItems.findIndex(i => i.name === item.name);
     if (index > -1) {
-      this.cartItems.splice(index, 1);
-      this.cartItemsSubject.next(this.cartItems);
+      this._cartItems.splice(index, 1);
+      this.cartItemsSubject.next(this._cartItems);
     }
   }
 
   updateQuantity(item: MenuItem, quantity: number) {
-    const cartItem = this.cartItems.find(i => i.name === item.name);
+    const cartItem = this._cartItems.find(i => i.name === item.name);
     if (cartItem) {
       cartItem.quantity = quantity;
-      this.cartItemsSubject.next(this.cartItems);
+      this.cartItemsSubject.next(this._cartItems);
     }
   }
 
   getTotalPrice(): number {
-    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return this._cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+
+  getTotalItemsCount(): number {
+    return this._cartItems.reduce((count, item) => count + item.quantity, 0);
   }
 }

@@ -48,14 +48,27 @@
       <!-- Country Code -->
       <div class="form-group">
         <label for="country_code">Country Code</label>
-        <input
+        <ng-select
           id="country_code"
-          type="text"
           class="form-control"
           formControlName="country_code"
-          placeholder="Enter your country code"
+          [items]="countryCodes"
+          bindLabel="country"
+          bindValue="code"
+          [searchable]="true"
+          [placeholder]="registerForm.get('country_code')?.value ? '' : 'Select a country'"
           required
-        />
+        >
+        <ng-template ng-option-tmp let-item="item">
+          {{ item.code }} - {{ item.country }} <!-- Display code and country in the dropdown -->
+        </ng-template>
+        <ng-template ng-label-tmp let-item="item">
+          {{ item ? item.code : '' }} <!-- Display only the country code in the input field -->
+        </ng-template>
+        </ng-select>
+        <div *ngIf="registerForm.get('country_code')?.invalid && registerForm.get('country_code')?.touched" class="error">
+          <small *ngIf="registerForm.get('country_code')?.hasError('required')">Country Code is required.</small>
+        </div>
       </div>
   
       <!-- Contact Number -->
@@ -70,7 +83,8 @@
           required
         />
         <div *ngIf="registerForm.get('contact_number')?.invalid && registerForm.get('contact_number')?.touched" class="error">
-          Contact Number is required and should be valid.
+          <small *ngIf="registerForm.get('contact_number')?.hasError('required')">Contact Number is required.</small>
+          <small *ngIf="registerForm.get('contact_number')?.hasError('pattern')">Contact Number should be valid.</small>
         </div>
       </div>
   
@@ -86,7 +100,8 @@
           required
         />
         <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
-          Valid Email is required.
+          <small *ngIf="registerForm.get('email')?.hasError('required')">Email is required.</small>
+          <small *ngIf="registerForm.get('email')?.hasError('strictEmail')">Invalid Email format.</small>
         </div>
       </div>
   
@@ -118,7 +133,7 @@
       </div>-->
   
       <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+      <button type="submit" class="btn btn-primary">
         Register
       </button>
     </form>

@@ -5,11 +5,13 @@ import { MenuBarComponent } from '../../shared/menu-bar/menu-bar.component';
 import { MenuListComponent } from '../../shared/menu-list/menu-list.component';
 import { CartModalComponent } from '../../shared/cart-modal/cart-modal.component';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { CartService } from '../../../services/cart/cart.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MenuBarComponent, MenuListComponent, CartModalComponent, CommonModule],
+  imports: [MenuBarComponent, MenuListComponent, CartModalComponent, CommonModule, MatIconModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -19,10 +21,14 @@ export class HomeComponent {
   selectedCategory: string = '';
   menuItems: MenuItem[] = [];
   isCartModalOpen: boolean = false; // Controls the cart modal visibility
+  cartItemCount: number = 0;
 
-  constructor(private posService: PosService) { }
+  constructor(private posService: PosService, private cartService: CartService) { }
 
   ngOnInit() {
+    this.cartService.cartItems$.subscribe((items) => {
+      this.cartItemCount = this.cartService.getTotalItemsCount();
+    });
     this.loadCategoriesAndMenuItems();
   }
 
