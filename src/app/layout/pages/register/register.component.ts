@@ -46,7 +46,7 @@ export class RegisterComponent {
       //address: [''],
       //country_code: ['', Validators.required],
       country_code: [this.countryCodes[0].code, Validators.required], // Default to the first country code
-      contact_number: ['', [Validators.required, Validators.pattern(/^-?([0-9]\d*)?$/)]],
+      contact_number: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       type: ['WEBSHOP', Validators.required],
       email: ['', [Validators.required, strictEmailValidator]],
       password: ['', [Validators.required, Validators.minLength(6)]],
