@@ -21,7 +21,8 @@ export class CartService {
   addToCart(item: MenuItem) {
     const existingItem = this._cartItems.find(i => i.name === item.name);
     if (existingItem) {
-      existingItem.quantity++;
+      // Add the quantity of the item from the modal to the existing quantity in the cart
+      existingItem.quantity += item.quantity;
     } else {
       this._cartItems.push({ ...item, quantity: item.quantity || 1 });
     }

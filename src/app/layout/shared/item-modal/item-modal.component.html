@@ -15,6 +15,9 @@
         <button (click)="changeQuantity(true)">+</button>
       </div>
   
+      <!-- Subtotal Display -->
+      <p>Subtotal: {{ getSubtotal() | currency }}</p>
+
       <button class="add-cart-btn" (click)="addToCart()">Add to Cart</button>
     </div>
   </div>

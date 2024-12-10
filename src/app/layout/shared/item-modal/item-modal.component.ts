@@ -26,6 +26,7 @@ export class ItemModalComponent {
   }
 
   closeModal() {
+    this.menuItem.quantity = 1; // Reset the quantity to 1
     this.close.emit(); // Notify the parent to close the modal
   }
 
@@ -39,10 +40,11 @@ export class ItemModalComponent {
     } else if (this.menuItem.quantity > 1) {
       this.menuItem.quantity--;
     }
+  }
 
-    // Update the quantity in cart service after change (optional, for real-time update)
-  this.cartService.updateQuantity(this.menuItem, this.menuItem.quantity); 
-  console.log('After change:', this.menuItem.quantity);
+  // Calculate the subtotal based on price and quantity
+  getSubtotal(): number {
+    return this.menuItem.price * this.menuItem.quantity;
   }
 
 }
