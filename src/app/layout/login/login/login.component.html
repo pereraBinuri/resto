@@ -10,6 +10,10 @@
             placeholder="Username"
             formControlName="username"
             required
+            [ngClass]="{
+              'is-invalid': submitted && loginForm.get('username')?.invalid,
+              'is-valid': submitted && loginForm.get('username')?.valid
+            }"
             
           />
           <i class='bx bxs-user'></i>
@@ -26,7 +30,10 @@
             placeholder="Password"
             formControlName="password"
             required
-           
+            [ngClass]="{
+              'is-invalid': submitted && loginForm.get('password')?.invalid,
+              'is-valid': submitted && loginForm.get('password')?.valid
+            }"
           />
           <i class='bx bxs-lock-alt'></i>
           <div *ngIf="submitted && loginForm.get('password')?.invalid">

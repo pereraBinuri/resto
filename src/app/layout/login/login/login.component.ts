@@ -34,6 +34,13 @@ export class LoginComponent {
       username: ['', [Validators.required, strictEmailValidator]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+
+    // Clear loginError on form changes
+    this.loginForm.valueChanges.subscribe(() => {
+      if (this.loginError) {
+        this.loginError = '';
+      }
+    });
   }
 
   // Getter for easy access to form fields

@@ -4,11 +4,15 @@
     background-color: #2c2c36;
     color: white;
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    min-height: 100vh; /* Full height of the viewport */
-    margin: 0; /* Remove any default margin */
-   
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+    min-height: 100vh;
+    /* Full height of the viewport */
+    margin: 0;
+    /* Remove any default margin */
+
 }
 
 /* Container styling */
@@ -17,25 +21,31 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;  /* Ensure the container takes the full height of the parent */
+    height: 100%;
+    /* Ensure the container takes the full height of the parent */
     margin-top: 120px;
 }
 
 /* Wrapper styling */
 .wrapper {
-    width: 100%; /* Ensure wrapper takes full container width */
-    max-width: 420px; /* Max width of wrapper to prevent stretching */
+    width: 100%;
+    /* Ensure wrapper takes full container width */
+    max-width: 420px;
+    /* Max width of wrapper to prevent stretching */
     background-color: #e4d00a;
     border: 2px solid rgba(255, 255, 255, 02);
     backdrop-filter: blur(40px);
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
-    box-sizing: border-box; /* Include padding and border in width calculation */
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center elements vertically inside the wrapper */
-    align-items: center; /* Center elements horizontally inside the wrapper */
+    justify-content: center;
+    /* Center elements vertically inside the wrapper */
+    align-items: center;
+    /* Center elements horizontally inside the wrapper */
 }
 
 /* Header styling */
@@ -68,8 +78,10 @@
 /* Error message styling */
 .input-box small {
     color: red;
-    font-size: 12px;
+    font-size: 0.9em;
+    font-weight: bold;
     position: absolute;
+    margin-top: 10px;
     bottom: -18px;
     left: 10px;
 }
@@ -81,7 +93,7 @@
     background-color: #fff;
     border: none;
     outline: none;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
@@ -121,8 +133,7 @@
 /* Error message styling */
 .error {
     color: red;
-    font-size: 0.9em;
-    color: #ff4d4d;
+    font-size: 0.95em;
     text-align: center;
     margin: 15px auto;
     max-width: 400px;
@@ -130,10 +141,12 @@
     font-weight: bold;
 }
 
-input.ng-invalid.ng-touched {
-    border-color: red;
+
+
+.is-invalid {
+    border-color: red !important;
 }
 
-input.ng-valid.ng-touched {
-    border-color: green;
+.is-valid {
+    border-color: green !important;
 }
