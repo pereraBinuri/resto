@@ -1,40 +1,28 @@
 <div class="register-container">
-    <h2>Register</h2>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <!-- First Name -->
-      <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input
-          id="first_name"
-          type="text"
-          class="form-control"
-          formControlName="first_name"
-          placeholder="Enter your first name"
-          required
-        />
-        <div *ngIf="registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched" class="error">
-          First Name is required.
-        </div>
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input id="first_name" type="text" class="form-control" formControlName="first_name"
+        placeholder="Enter your first name" required />
+      <div *ngIf="registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched" class="error">
+        <small *ngIf="registerForm.get('first_name')?.hasError('required')">First Name is required.</small>
       </div>
-  
-      <!-- Last Name -->
-      <div class="form-group">
-        <label for="last_name">Last Name</label>
-        <input
-          id="last_name"
-          type="text"
-          class="form-control"
-          formControlName="last_name"
-          placeholder="Enter your last name"
-          required
-        />
-        <div *ngIf="registerForm.get('last_name')?.invalid && registerForm.get('last_name')?.touched" class="error">
-          Last Name is required.
-        </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input id="last_name" type="text" class="form-control" formControlName="last_name"
+        placeholder="Enter your last name" required />
+      <div *ngIf="registerForm.get('last_name')?.invalid && registerForm.get('last_name')?.touched" class="error">
+        <small *ngIf="registerForm.get('last_name')?.hasError('required')">Last Name is required.</small>
       </div>
-  
-      <!-- Address -->
-      <!--<div class="form-group">
+    </div>
+
+    <!-- Address -->
+    <!--<div class="form-group">
         <label for="address">Address</label>
         <textarea
           id="address"
@@ -44,86 +32,65 @@
           rows="3"
         ></textarea>
       </div>-->
-  
+
+    <!-- Country Code and Contact Number -->
+    <div class="form-group-inline">
       <!-- Country Code -->
       <div class="form-group">
         <label for="country_code">Country Code</label>
-        <ng-select
-          id="country_code"
-          class="form-control"
-          formControlName="country_code"
-          [items]="countryCodes"
-          bindLabel="country"
-          bindValue="code"
-          [searchable]="true"
-          [placeholder]="registerForm.get('country_code')?.value ? '' : 'Select a country'"
-          required
-        >
-        <ng-template ng-option-tmp let-item="item">
-          {{ item.code }} - {{ item.country }} <!-- Display code and country in the dropdown -->
-        </ng-template>
-        <ng-template ng-label-tmp let-item="item">
-          {{ item ? item.code : '' }} <!-- Display only the country code in the input field -->
-        </ng-template>
+        <ng-select id="country_code" class="form-control" formControlName="country_code" [items]="countryCodes"
+          bindLabel="country" bindValue="code" [searchable]="true"
+          [placeholder]="registerForm.get('country_code')?.value ? '' : 'Select a country'" required>
+          <ng-template ng-option-tmp let-item="item">
+            {{ item.code }} - {{ item.country }}
+          </ng-template>
+          <ng-template ng-label-tmp let-item="item">
+            {{ item ? item.code : '' }}
+          </ng-template>
         </ng-select>
         <div *ngIf="registerForm.get('country_code')?.invalid && registerForm.get('country_code')?.touched" class="error">
           <small *ngIf="registerForm.get('country_code')?.hasError('required')">Country Code is required.</small>
         </div>
       </div>
-  
+
       <!-- Contact Number -->
       <div class="form-group">
         <label for="contact_number">Contact Number</label>
-        <input
-          id="contact_number"
-          type="text"
-          class="form-control"
-          formControlName="contact_number"
-          placeholder="Enter your contact number"
-          required
-        />
-        <div *ngIf="registerForm.get('contact_number')?.invalid && registerForm.get('contact_number')?.touched" class="error">
+        <input id="contact_number" type="text" class="form-control" formControlName="contact_number"
+          placeholder="Enter your contact number" required />
+        <div *ngIf="registerForm.get('contact_number')?.invalid && registerForm.get('contact_number')?.touched"
+          class="error">
           <small *ngIf="registerForm.get('contact_number')?.hasError('required')">Contact Number is required.</small>
           <small *ngIf="registerForm.get('contact_number')?.hasError('pattern')">Contact Number should be valid.</small>
         </div>
       </div>
-  
-      <!-- Email -->
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          class="form-control"
-          formControlName="email"
-          placeholder="Enter your email"
-          required
-        />
-        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
-          <small *ngIf="registerForm.get('email')?.hasError('required')">Email is required.</small>
-          <small *ngIf="registerForm.get('email')?.hasError('strictEmail')">Invalid Email format.</small>
-        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" class="form-control" formControlName="email" placeholder="Enter your email"
+        required />
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+        <small *ngIf="registerForm.get('email')?.hasError('required')">Email is required.</small>
+        <small *ngIf="registerForm.get('email')?.hasError('strictEmail')">Invalid Email format.</small>
       </div>
-  
-      <!-- Password -->
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          class="form-control"
-          formControlName="password"
-          placeholder="Enter your password"
-          required
-        />
-        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
-          <small *ngIf="registerForm.get('password')?.hasError('required')">Password is required.</small>
-          <small *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</small>
-        </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" class="form-control" formControlName="password"
+        placeholder="Enter your password" required />
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+        <small *ngIf="registerForm.get('password')?.hasError('required')">Password is required.</small>
+        <small *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 6 characters
+          long.</small>
       </div>
-  
-      <!-- Subscribe to Promotions -->
-      <!--<div class="form-group">
+    </div>
+
+    <!-- Subscribe to Promotions -->
+    <!--<div class="form-group">
         <label>
           <input
             type="checkbox"
@@ -132,11 +99,20 @@
           Subscribe to Promotion Emails
         </label>
       </div>-->
-  
-      <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary">
-        Register
-      </button>
-    </form>
-  </div>
-  
+
+    <!-- Error Messages Section -->
+    <div *ngIf="hasErrors()" class="global-errors">
+      <div *ngIf="registerForm.get('email')?.hasError('backend')" class="error">
+        {{ registerForm.get('email')?.getError('backend') }}
+      </div>
+      <div *ngIf="registerForm.get('contact_number')?.hasError('backend')" class="error">
+        {{ registerForm.get('contact_number')?.getError('backend') }}
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">
+      Register
+    </button>
+  </form>
+</div>

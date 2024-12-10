@@ -71,16 +71,38 @@ export class RegisterComponent {
         },
         error => {
           console.error('Registration failed:', error);
-          //alert('Registration failed. Please try again.');
+          if (error.status === 400 && error.error) {
+            const backendError = error.error;
+  
+            // Dynamically handle backend errors based on `data.property`
+            if (backendError.data?.property === 'email') {
+              this.registerForm.get('email')?.setErrors({ backend: backendError.message });
+            } else if (backendError.data?.property === 'contact_number') {
+              this.registerForm.get('contact_number')?.setErrors({ backend: backendError.message });
+            }
+          } else {
+            console.error('Unexpected error format:', error);
+          }
         }
       );
-    }
+    } else {
+    // Mark all controls as touched to trigger validation messages
+    this.registerForm.markAllAsTouched();
   }
+  }
+
+  hasErrors(): boolean {
+    return (
+      !!this.registerForm.get('email')?.hasError('backend') || 
+      !!this.registerForm.get('contact_number')?.hasError('backend')
+    );
+  }
+  
 
   // Handle ngModel change (this updates the form control as well)
   //onCountryCodeChange(selectedValue: any) {
-    //this.selectedCountryCode = selectedValue;
-    // If you're using Reactive Forms, you can also update the form control here
-    //this.registerForm.get('country_code')?.setValue(selectedValue);
+  //this.selectedCountryCode = selectedValue;
+  // If you're using Reactive Forms, you can also update the form control here
+  //this.registerForm.get('country_code')?.setValue(selectedValue);
   //}
 }
