@@ -21,6 +21,7 @@ import { strictEmailValidator } from '../../../helpers/validators/strict-email.v
 export class RegisterComponent {
 
   registerForm: FormGroup;  // Declare the formGroup here
+  submitted = false; // Initialize the `submitted` variable
   // List of country codes
   countryCodes = [
     { code: '+1', country: 'USA' },
@@ -56,6 +57,7 @@ export class RegisterComponent {
   }
 
   onSubmit() {
+    this.submitted = true; // Mark the form as submitted
     if (this.registerForm.valid) {
       const registerData: Register = this.registerForm.value;
 
