@@ -1,10 +1,13 @@
-<div class="menu-bar">
+<div class="menu-bar-container overflow-auto">
+  <div class="menu-bar d-flex flex-nowrap">
     <button 
-    *ngFor="let category of categories" 
-    [class.active]="category.name === selectedCategory"
-    (click)="selectCategory(category.name)">
+      *ngFor="let category of categories" 
+      [class.active]="category.name === selectedCategory"
+      (click)="selectCategory(category.name)"
+      [title]="category.name"
+      class="btn flex-shrink-0">
       {{ category.name }}
       <span class="ripple"></span>
     </button>
   </div>
-  
+</div>

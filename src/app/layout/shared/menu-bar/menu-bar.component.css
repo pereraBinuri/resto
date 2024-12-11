@@ -1,12 +1,21 @@
+.menu-bar-container {
+  white-space: nowrap;
+}
+
 .menu-bar {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
+  padding: 10px 0;
   margin-bottom: 20px;
 }
 
 .menu-bar button {
   position: relative;
+  width: 130px; /* Fixed width */
+  min-height: 20px; /* Fixed height */
+  text-align: center; /* Center the text */
+  line-height: 1.2; /* Adjust line height for vertical centering */
   background-color: #ffdf00;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -15,6 +24,9 @@
   font-size: 1.1rem;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   overflow: hidden;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+  white-space: normal; /* Ensure the text doesn't wrap */
+  word-break: break-word; /* Break long words if necessary */
 }
 
 .menu-bar button.active {
