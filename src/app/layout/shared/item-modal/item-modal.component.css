@@ -24,23 +24,28 @@
     padding: 20px;
     border-radius: 10px;
     width: 500px;
-    height: 600px;
+    max-height: 90%;
     max-width: 90%;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Enable vertical scrolling */
     z-index: 10000;
   }
   
   .close-btn {
     font-size: 24px;          /* Size of the icon */
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: sticky;
+    top: 0;
+    align-self: flex-end; /* Align button to the right */
+    margin-bottom: 10px; /* Add spacing below the button */
     cursor: pointer;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(132, 120, 120);
     color: rgb(255, 255, 255);
     border: none;
-    padding: 5px;   
+    padding: 5px;
+    border-radius: 50%; /* Makes the button circular */
+    width: 40px; /* Set fixed width */
+    height: 40px; /* Set fixed height */   
     z-index: 1011;  
   }
 
@@ -74,6 +79,13 @@
 .quantity-control span {
   font-size: 20px;
   font-weight: bold;
+}
+
+.quantity-control button:disabled {
+  background-color: #8e8787; /* Light gray */
+  color: #ffffff; /* Darker gray for text */
+  cursor: not-allowed; /* Not clickable */
+  opacity: 0.6; /* Reduced prominence */
 }
 
 /* Add to Cart button */

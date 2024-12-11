@@ -10,7 +10,7 @@
             <h4>{{ item.name }}</h4>
             <p>{{ item.price | currency }}</p>
             <div class="quantity-control">
-              <button (click)="updateQuantity(item, false)">-</button>
+              <button (click)="updateQuantity(item, false)" [disabled]="item.quantity <= 1">-</button>
               <span>{{ item.quantity }}</span>
               <button (click)="updateQuantity(item, true)">+</button>
             </div>

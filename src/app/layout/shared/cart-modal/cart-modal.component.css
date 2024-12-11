@@ -108,6 +108,13 @@ h2 {
     font-weight: bold;
 }
 
+.quantity-control button:disabled {
+    background-color: #8e8787; /* Light gray */
+    color: #ffffff; /* Darker gray for text */
+    cursor: not-allowed; /* Not clickable */
+    opacity: 0.6; /* Reduced prominence */
+  }
+
 /* Remove item button */
 button {
     background-color: #ff4d4d;
