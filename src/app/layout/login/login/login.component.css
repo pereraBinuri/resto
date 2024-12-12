@@ -5,14 +5,9 @@
     color: white;
     display: flex;
     justify-content: center;
-    /* Centers horizontally */
     align-items: center;
-    /* Centers vertically */
     min-height: 100vh;
-    /* Full height of the viewport */
     margin: 0;
-    /* Remove any default margin */
-
 }
 
 /* Container styling */
@@ -20,32 +15,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 600px;
+    border-radius: 10px;
     /* Ensure the container takes the full height of the parent */
-    margin-top: 120px;
+    margin-top: 60px;
 }
 
 /* Wrapper styling */
 .wrapper {
-    width: 100%;
-    /* Ensure wrapper takes full container width */
-    max-width: 420px;
-    /* Max width of wrapper to prevent stretching */
+    width: 420px;
     background-color: #e4d00a;
     border: 2px solid rgba(255, 255, 255, 02);
     backdrop-filter: blur(40px);
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
-    box-sizing: border-box;
-    /* Include padding and border in width calculation */
+    box-sizing: border-box; /* Include padding and border in width calculation */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* Center elements vertically inside the wrapper */
-    align-items: center;
-    /* Center elements horizontally inside the wrapper */
+    justify-content: center; /* Center elements vertically inside the wrapper */
+    align-items: center; /* Center elements horizontally inside the wrapper */
 }
 
 /* Header styling */
@@ -58,6 +48,7 @@
 .wrapper .input-box {
     position: relative;
     width: 100%;
+    height: 50px;
     margin-bottom: 25px;
 }
 
@@ -71,19 +62,21 @@
     border-radius: 40px;
     font-size: 16px;
     color: #fff;
-    padding: 10px 45px 10px 20px;
+    padding: 10px 60px 10px 20px;
     box-sizing: border-box;
 }
 
 /* Error message styling */
 .input-box small {
     color: red;
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: bold;
     position: absolute;
-    margin-top: 10px;
     bottom: -18px;
     left: 10px;
+    white-space: nowrap; /* Prevents long error messages from breaking */
+    overflow: hidden; /* Hides overflow for too-long messages */
+    text-overflow: ellipsis; /* Adds ellipsis for long error messages */
 }
 
 /* Button styling */
