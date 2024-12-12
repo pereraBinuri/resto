@@ -7,6 +7,8 @@
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
     font-family: 'Arial', sans-serif;
+    position: relative; /* Ensure it stays in normal flow initially */
+    z-index: 1000; /* Ensure it stays below the menu bar */
 }
 
 .menu-btn {

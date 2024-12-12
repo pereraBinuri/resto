@@ -5,10 +5,12 @@
     <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
   </div>
 
-  <div>
+  <div class="menu-container">
     <app-menu-bar [categories]="categories" [selectedCategory]="selectedCategory"
       (categorySelected)="onCategorySelected($event)">
     </app-menu-bar>
+  </div>
+  <div>
     <!-- Pass computed menuItems to MenuListComponent -->
     <app-menu-list [menuItems]="menuItems">
     </app-menu-list>
