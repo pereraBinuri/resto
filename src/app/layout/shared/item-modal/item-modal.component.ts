@@ -32,6 +32,7 @@ export class ItemModalComponent {
 
   addToCart() {
     this.cartService.addToCart(this.menuItem);
+    this.closeModal();
   }
 
   changeQuantity(increase: boolean) {
