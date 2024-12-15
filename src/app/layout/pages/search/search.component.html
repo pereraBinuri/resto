@@ -2,7 +2,10 @@
     <!-- Search Bar -->
     <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search for menu items..." />
   
+     <!-- Display skeleton loader while loading -->
+     <ngx-skeleton-loader *ngIf="isLoading" count="5" [theme]="{ height: '80px', width: '80%' }"></ngx-skeleton-loader>
+
     <!-- Display search results using MenuListComponent -->
-    <app-menu-list [menuItems]="filteredItems"></app-menu-list>
+    <app-menu-list *ngIf="!isLoading" [menuItems]="filteredItems"></app-menu-list>
   </div>
   

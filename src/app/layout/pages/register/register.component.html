@@ -58,8 +58,7 @@
         <label for="contact_number">Contact Number</label>
         <input id="contact_number" type="text" class="form-control" formControlName="contact_number"
           placeholder="Enter your contact number" required />
-        <div *ngIf="registerForm.get('contact_number')?.invalid && submitted"
-          class="error">
+        <div *ngIf="registerForm.get('contact_number')?.invalid && submitted" class="error">
           <small *ngIf="registerForm.get('contact_number')?.hasError('required')">Contact Number is required.</small>
           <small *ngIf="registerForm.get('contact_number')?.hasError('pattern')">Contact Number should be valid.</small>
         </div>
@@ -110,9 +109,25 @@
       </div>
     </div>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">
-      Register
-    </button>
+    <div>
+      <!-- Submit Button -->
+      <button *ngIf="!isSpinnerActive" type="submit" class="btn btn-primary">
+        Register
+      </button>
+
+      <!-- Loading button with Bootstrap spinner -->
+      <button *ngIf="isSpinnerActive" type="button" style="color: rgb(0, 0, 0);"
+        class="btn btn-primary d-flex align-items-center justify-content-center" [disabled]="true">
+        <i class="bi bi-arrow-repeat spin me-2"></i> <!-- Bootstrap spinner icon -->
+      </button>
+    </div>
+
+    <!-- Back to Login Link -->
+    <div class="form-footer">
+      <p>
+        Already have an account?
+        <a routerLink="/login" class="login-link">Go back to Login</a>
+      </p>
+    </div>
   </form>
 </div>

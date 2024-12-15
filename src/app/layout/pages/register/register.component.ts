@@ -22,6 +22,8 @@ export class RegisterComponent {
 
   registerForm: FormGroup;  // Declare the formGroup here
   submitted = false; // Initialize the `submitted` variable
+  isSpinnerActive: boolean = false; // Local spinner state
+
   // List of country codes
   countryCodes = [
     { code: '+1', country: 'USA' },
@@ -59,10 +61,12 @@ export class RegisterComponent {
   onSubmit() {
     this.submitted = true; // Mark the form as submitted
     if (this.registerForm.valid) {
+      this.isSpinnerActive = true; // Set local spinner state
       const registerData: Register = this.registerForm.value;
 
       this.authenticationService.register(registerData).subscribe(
         response => {
+          this.isSpinnerActive = false; // Reset spinner state
           console.log('Registration successful:', response);
           //alert('Registration successful! Redirecting to login page.');
           // Store email and password in UserService
@@ -72,6 +76,7 @@ export class RegisterComponent {
           this.router.navigate(['/login']);
         },
         error => {
+          this.isSpinnerActive = false; // Reset spinner state
           console.error('Registration failed:', error);
           if (error.status === 400 && error.error) {
             const backendError = error.error;

@@ -88,11 +88,17 @@
     outline: none;
     margin-top: 10px;
     border-radius: 40px;
+    padding: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible; /* Ensure spinner isn't clipped */
 }
 
 /* Hover effect for button */
@@ -143,3 +149,46 @@
 .is-valid {
     border-color: green !important;
 }
+
+ngx-spinner {
+    display: inline-block;
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    position: absolute; /* Position relative to button */
+  }
+
+  /* Custom spinner styles */
+ .custom-spinner {
+    border: 4px solid transparent; /* Make the spinner border transparent */
+    border-top: 4px solid #000000; /* Set the top border color to the spinner's color */
+    border-radius: 50%; /* Make the spinner circular */
+    width: 20px; /* Set the spinner size */
+    height: 20px; /* Set the spinner size */
+    animation: spin 1s linear infinite; /* Spin the element infinitely */
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+
+  .spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  
+  
+

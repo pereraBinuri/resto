@@ -279,5 +279,41 @@
   font-weight: bold;
 }
 
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-footer p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.form-footer .login-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.form-footer .login-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
   
