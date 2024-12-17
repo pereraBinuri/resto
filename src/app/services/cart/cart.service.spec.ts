@@ -13,4 +13,8 @@ describe('CartService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should start with an empty cart', () => {
+    expect(service.cartItems).toEqual([]); // Initial cart items should be an empty array
+  });
 });
