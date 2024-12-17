@@ -4,7 +4,7 @@ import { ItemModalComponent } from './item-modal.component';
 import { MenuItem } from '../../../models/menu-item.model';
 import { CartService } from '../../../services/cart/cart.service';
 
-fdescribe('ItemModalComponent', () => {
+describe('ItemModalComponent', () => {
   let component: ItemModalComponent;
   let fixture: ComponentFixture<ItemModalComponent>;
   let cartService: CartService;
