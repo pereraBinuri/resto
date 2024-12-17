@@ -10,9 +10,9 @@
       <p>Price: {{ menuItem.price | currency }}</p>
 
       <div class="quantity-control">
-        <button (click)="changeQuantity(false)" [disabled]="menuItem.quantity <= 1">-</button>
+        <button class="decrement-btn" (click)="changeQuantity(false)" [disabled]="menuItem.quantity <= 1">-</button>
         <span>{{ menuItem.quantity || 1 }}</span>
-        <button (click)="changeQuantity(true)">+</button>
+        <button class="increment-btn" (click)="changeQuantity(true)">+</button>
       </div>
   
       <!-- Subtotal Display -->

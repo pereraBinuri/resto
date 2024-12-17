@@ -5,7 +5,7 @@ import { MenuItemComponent } from './menu-item.component';
 import { MenuItem } from '../../../models/menu-item.model';
 import { By } from '@angular/platform-browser';
 
-fdescribe('MenuItemComponent', () => {
+describe('MenuItemComponent', () => {
   let component: MenuItemComponent;
   let fixture: ComponentFixture<MenuItemComponent>;
   //let posService: jasmine.SpyObj<PosService>;
