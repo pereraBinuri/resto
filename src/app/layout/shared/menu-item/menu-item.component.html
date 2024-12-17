@@ -8,12 +8,12 @@
     </ng-template>
     <div>
       <h3>{{ menuItem.name }}</h3>
-      <p *ngIf="menuItem.description && menuItem.description !== 'null'">
+      <p class="menu-item-description" *ngIf="menuItem.description && menuItem.description !== 'null'">
         {{ menuItem.description.length < 80 ? menuItem.description : (menuItem.description | slice:0:60) + '...' }}
       </p>
       <!-- Display only first 150 characters -->
       <p *ngIf="!menuItem.description || menuItem.description === 'null'"></p>
-      <p>Price: {{ menuItem.price | currency }}</p>
+      <p class="menu-item-price">Price: {{ menuItem.price | currency }}</p>
     </div>
   </div>
 </div>
